@@ -1,0 +1,14 @@
+venv/
+build/
+dist/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.skill
+dummy_source/
+dummy_dest/
+test_dest/
+*_hermes/
+.DS_Store
