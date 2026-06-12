@@ -15,12 +15,13 @@ A fast, heuristic-based converter that seamlessly translates agent skills from t
 You don't need to install Python to run this! You can download the pre-built executables directly from the [GitHub Actions](https://github.com/JJH-Hacker/openclaw-to-hermes-converter/actions) tab.
 
 1. Go to the **Actions** tab.
-2. Click on the latest successful workflow run at the very top of the list.
-3. Scroll down to the **Artifacts** section at the bottom.
-4. Download the version for your operating system:
+2. On the left sidebar, click on the **Build App** workflow.
+3. Click on the latest successful workflow run at the very top of the list.
+4. Scroll down to the **Artifacts** section at the bottom.
+5. Download the version for your operating system:
    - **`SkillConverter-Windows`** (contains the `.exe` file for Windows)
    - **`SkillConverter-Mac`** (contains the `.app` bundle for macOS)
-5. Extract the downloaded zip file and run the application!
+6. Extract the downloaded zip file and run the application!
 
 ## Running from Source (Developers)
 
