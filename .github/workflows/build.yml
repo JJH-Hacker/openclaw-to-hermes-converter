@@ -1,0 +1,53 @@
+name: Build App
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Build with PyInstaller
+      run: |
+        pyinstaller --windowed --onefile --name "SkillConverter" --noconfirm app.py
+    - name: Upload Windows Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: SkillConverter-Windows
+        path: dist/SkillConverter.exe
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Build with PyInstaller
+      run: |
+        pyinstaller --windowed --name "SkillConverter" --noconfirm app.py
+    - name: Compress Mac App
+      run: |
+        cd dist
+        zip -r SkillConverter-Mac.zip SkillConverter.app
+    - name: Upload Mac Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: SkillConverter-Mac
+        path: dist/SkillConverter-Mac.zip
